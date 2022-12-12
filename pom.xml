@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.3</version>
+		<version>3.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.knits</groupId>
@@ -15,22 +15,20 @@
 	<description>spring-boot-basic template</description>
 
 	<properties>
-		<java.version>11</java.version>
-		<maven.version>3.3.9</maven.version>
+		<java.version>19</java.version>
+		<maven.version>3.0.0</maven.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<mapstruct.version>1.4.2.Final</mapstruct.version>
-		<spring-boot.version>2.5.3</spring-boot.version>
-		<org.projectlombok.version>1.18.16</org.projectlombok.version>
+		<mapstruct.version>1.5.3.Final</mapstruct.version>
+		<spring-boot.version>3.0.0</spring-boot.version>
+		<org.projectlombok.version>1.18.24</org.projectlombok.version>
 
 	</properties>
 
 	<dependencies>
-
-
 		<!-- common -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -58,7 +56,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.12</version>
+			<version>1.6.13</version>
 		</dependency>
 
 		<!-- spring -->
@@ -88,8 +86,6 @@
 			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
-
-
 
 	</dependencies>
 

@@ -14,7 +14,7 @@ public class AsyncConfiguration {
     @Bean("asyncScheduler")
     public ThreadPoolTaskScheduler taskScheduler(){
         ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
-        threadPoolTaskScheduler.setPoolSize(6);
+        threadPoolTaskScheduler.setPoolSize(10);
         threadPoolTaskScheduler.setAwaitTerminationSeconds(60);
         threadPoolTaskScheduler.setThreadNamePrefix("THREAD-");
         return threadPoolTaskScheduler;

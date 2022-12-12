@@ -1,11 +1,12 @@
 package com.internship.iotsimulatorkafka.api;
 
-import com.internship.iotsimulatorkafka.dto.BaseRequest;
-import com.internship.iotsimulatorkafka.dto.BaseResponse;
+import com.internship.iotsimulatorkafka.dto.DeviceConnectionRequest;
+import com.internship.iotsimulatorkafka.dto.DeviceConnectionResponse;
 import com.internship.iotsimulatorkafka.service.IotSimulatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 
 @RestController
@@ -15,24 +16,32 @@ public class IotSimulatorController {
     @Autowired
     private IotSimulatorService iotSimulatorService;
 
-    @PostMapping("/starts_session/{machineId}/{deviceId}")
-    public ResponseEntity<BaseResponse> startSession(@RequestBody BaseRequest baseRequest) {
-        return ResponseEntity.ok().body(iotSimulatorService.startSession(baseRequest));
+    @PostMapping("/starts_session")
+    public ResponseEntity<DeviceConnectionResponse> startSession(@RequestBody DeviceConnectionRequest deviceConnectionRequest) {
+        iotSimulatorService.startSession(deviceConnectionRequest);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/end_session/{sessionId}")
-    public ResponseEntity<BaseResponse> endSession(@PathVariable Long sessionId) {
-        return ResponseEntity.ok().body(iotSimulatorService.endSession(sessionId));
+    public ResponseEntity<DeviceConnectionResponse> endSession(@PathVariable Long sessionId) {
+        iotSimulatorService.endSession(sessionId);
+        return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/send_metrics/{sessionId}/{intervalInSeconds}")
-    public ResponseEntity<BaseResponse> sendMetrics(@PathVariable Long sessionId,  @PathVariable Integer intervalInSeconds) {
-        return ResponseEntity.ok().body(iotSimulatorService.sendMetrics(sessionId, intervalInSeconds));
+    @PostMapping("/send_metrics/{sessionId}/{intervalInMilliSeconds}")
+    public ResponseEntity<?> sendMetrics(
+            @PathVariable Integer intervalInMilliSeconds,
+            @PathVariable Long sessionId
+    ) {
+        iotSimulatorService.sendMetrics(sessionId, intervalInMilliSeconds);
+        return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/stop_send_metrics/{sessionId}")
-    public ResponseEntity<BaseResponse> stopSendMetrics(Long sessionId) throws Exception {
-        return ResponseEntity.ok().body(iotSimulatorService.stopSendingMetrics(sessionId));
-
+    @PostMapping("/stop_sending_metrics/{sessionId}")
+    public ResponseEntity<?> stopSendingMetrics(
+            @PathVariable Long sessionId
+    ) {
+        iotSimulatorService.stopSendingMetrics(sessionId);
+        return ResponseEntity.noContent().build();
     }
 }

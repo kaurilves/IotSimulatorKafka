@@ -9,6 +9,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseResponse implements Serializable {
-    private Long sessionId;
+public class DeviceConnectionResponse implements Serializable {
+    private Long id;
 }
